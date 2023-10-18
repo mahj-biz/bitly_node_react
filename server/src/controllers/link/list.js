@@ -3,7 +3,10 @@ import { parseMessage } from "../../utils/helper";
 
 const listAll = async (req, res) => {
   try {
-    const links = await Link.findAll();
+    const links = await Link.findAll({
+      order: [
+      ['id', 'ASC']
+  ],});
     const length = links.length;
     res.status(200).json(parseMessage(`${length} link(s) retrieved`, links)); 
     return;
