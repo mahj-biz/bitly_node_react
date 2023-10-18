@@ -37,3 +37,7 @@ apiLink.interceptors.response.use(
 export const listAllLinks = async () => {
   return await apiLink.get("/");
 };
+
+export const addLinks = async (data) => {
+  return await apiLink.post("/",data);
+};

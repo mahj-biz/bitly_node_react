@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Page from "../components/Page";
 import Header from "../components/Header";
 import Container from "../components/Container";
-import { listAllLinks } from "../utils/api/link";
+import { listAllLinks } from "../utils/api/link"; 
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const fetchLinks = async () => {
     try {
@@ -32,6 +34,11 @@ const Dashboard = () => {
 
   };
 
+  const handleAddLinkRedirect = () =>{
+    //e.preventDefault();
+    navigate("/admin/addlinks");
+  };
+
   useEffect(() => {
     fetchLinks();
   }, []);
@@ -54,7 +61,7 @@ const Dashboard = () => {
           }}
         >
           <h5>Clonely Dashboard</h5>
-          <button>New link</button>
+          <button onClick={() => handleAddLinkRedirect()}>New link</button>
         </div>
         <table>
           <thead>
