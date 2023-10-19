@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Settings from "../pages/Settings";
 import Users from "../pages/Users";
 import AddLink from "../pages/AddLink";
+import EditLink from "../pages/EditLink";
 import Cookies from "universal-cookie";
 
 const AppRoutes = () => {
@@ -39,6 +40,7 @@ const ProtectedRoutes = () => {
     <Routes>
       <Route path="/" element={<Dashboard userId={1} />} />
       <Route path="/addlinks" element={<AddLink />} />
+      <Route path="/editlinks/:id" element={<EditLink />} />
       <Route path="/users" element={<Users />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>

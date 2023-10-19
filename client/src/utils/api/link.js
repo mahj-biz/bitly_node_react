@@ -41,3 +41,9 @@ export const listAllLinks = async () => {
 export const addLinks = async (data) => {
   return await apiLink.post("/",data);
 };
+export const getLinks = async (id) => {
+  return await apiLink.get(`/${id}`);
+};
+export const editLinks = async (id,data) => {
+  return await apiLink.put(`/${id}`,data);
+};

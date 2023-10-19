@@ -39,6 +39,10 @@ const Dashboard = () => {
     navigate("/admin/addlinks");
   };
 
+  const handleEditLink =(id)=>{
+    navigate(`/admin/editlinks/${id}`);
+  }
+
   useEffect(() => {
     fetchLinks();
   }, []);
@@ -72,6 +76,7 @@ const Dashboard = () => {
               <th>Created</th>
               <th>Updated</th>
               <th>Action</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +95,12 @@ const Dashboard = () => {
                   style={{ textDecoration: "underline", cursor: "pointer" }}
                 >
                   Copy
+                </td>
+                <td
+                  onClick={() => handleEditLink(link.id)}
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
+                >
+                  Edit
                 </td>
               </tr>
             ))}
