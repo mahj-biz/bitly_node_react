@@ -16,7 +16,7 @@ const AddLink = () => {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
-        console.log(data);
+        //console.log(data);
         try {
           const response = await addLinks(data);
           alert(response.data.message);

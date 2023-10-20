@@ -18,6 +18,7 @@ const EditLink = () => {
       try {
         const response = await getLinks(id);
         setData(response.data.data);
+        //console.log(response.data.data);
       } catch (error) {
         alert(error.response.data.message);
       }
@@ -26,14 +27,20 @@ const EditLink = () => {
       getLinkData();
     }, []);
 
+    const onChangeInput = (event, key) => {
+      const newData = {...data}
+      newData[key] = event.target.value
+      setData(newData)
+    }
+
     const handleSubmit = async (e)=>{
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
-        console.log(data);
+        //console.log(data);
         try {
-          const response = await editLinks(data);
+          const response = await editLinks(id,data);
           alert(response.data.message);
           navigate("/admin");
         } catch (error) {
@@ -69,7 +76,7 @@ const EditLink = () => {
                     {/* need edit bind data */}
                     <div style={inputContainer}>
                         <label htmlFor="original_link">Original Link</label>
-                        <input type="text" name="original_link" id="original_link" />
+                        <input type="text" name="original_link" id="original_link"  defaultValue={data?.original_link}  onChange={(e) => onChangeInput(e, 'original_link')}/>
                     </div>                 
                     <button type="submit">Submit</button>
                 </form>
